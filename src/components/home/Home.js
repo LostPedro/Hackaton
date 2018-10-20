@@ -6,32 +6,78 @@ import {
   ImageBackground,
   ScrollView,
   TouchableOpacity,
-  Alert
+  Alert,
+  StyleSheet
 } from 'react-native';
+import Swiper from 'react-native-swiper';
+import { BlurView } from 'expo';
 
 class Home extends Component {
 
   render() {
     return (
-      <ImageBackground source={{ uri: 'https://4.bp.blogspot.com/-ylz0GQFhHq8/WfDNlW9h9TI/AAAAAAAAFHo/3OBE_CxO0lcfic4zr1TAlxlLusMPaSqsACLcBGAs/s1600/tsunami.jpg' }} style={{width: '100%', height: '100%'}}>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <TouchableOpacity style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center', marginBottom: 30 }}>
-            <View style={{ backgroundColor: 'rgba(0,0,0,0.7)', height: 60, width: 350, justifyContent: 'center', alignItems: 'center', borderWidth: 0.5, borderRadius: 35, borderColor: 'gray' }}>
-                <Text style={{ fontWeight: 'normal', fontSize: 18, color: 'white' }}>SURVIVE</Text>
-            </View>
-          </TouchableOpacity>
+      <Swiper showsPagination={false} style={styles.wrapper} showsButtons={true}>
+          <ImageBackground source={{ uri: 'https://4.bp.blogspot.com/-ylz0GQFhHq8/WfDNlW9h9TI/AAAAAAAAFHo/3OBE_CxO0lcfic4zr1TAlxlLusMPaSqsACLcBGAs/s1600/tsunami.jpg'}} style={styles.slide1}>
+              <Text style={styles.text}>TSUNAMI</Text>
+              <TouchableOpacity style={{ flex: 1, justifyContent : 'flex-end', alignItems: 'center', marginBottom: 30 }}>
+                <BlurView intensity={90} blurType="light" style={styles.button}>
+                  <Text style={{ fontWeight: 'normal', fontSize: 20, color: '#FFF', fontWeight: 'bold' }}>SURVIVE</Text>
+                </BlurView>
+              </TouchableOpacity>
+          </ImageBackground>
+        <View style={styles.slide2}>
+
         </View>
-      </ImageBackground>
+        <View style={styles.slide3}>
+
+        </View>
+      </Swiper>
     );
   }
 }
 
-const styles = {
-  title: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: '#FFF'
+
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.3)'
   },
-};
+  slide1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.3)'
+  },
+  slide2: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#97CAE5',
+  },
+  slide3: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#92BBD9',
+  },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: 20
+  },
+  button:{
+    marginBottom: 30,
+    backgroundColor: 'rgba(0,0,0, 0.3)',
+    height: 60,
+    width: 350,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 0.5,
+    borderRadius: 20,
+    borderColor: 'gray'
+}
+})
 
 export { Home };

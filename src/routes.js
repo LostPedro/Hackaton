@@ -7,7 +7,7 @@ const Routes = () => {
    <Router>
      <Scene key="root" hideNavBar>
 
-       <Scene navTransparent title="TSUNAMI" key="main">
+       <Scene hideNavBar key="main">
          <Scene key="home" component={Home} />
        </Scene>
 
