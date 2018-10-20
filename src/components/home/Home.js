@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Actions } from 'react-native-router-flux';
 import {
   Text,
   View,
@@ -30,7 +31,7 @@ class Home extends Component {
                 <BlurView intensity={90} blurType="light" style={{ width: width, alignItems: 'center', justifyContent: 'center', height: 50}}>
                   <Text style={styles.text}>MAREMOTO</Text>
                 </BlurView>
-                <TouchableOpacity style={{ flex: 1, justifyContent : 'flex-end', alignItems: 'center', marginBottom: 30 }}>
+                <TouchableOpacity onPress={Actions.simulate} style={{ flex: 1, justifyContent : 'flex-end', alignItems: 'center', marginBottom: 30 }}>
                   <BlurView intensity={90} blurType="light" style={styles.button}>
                     <Text style={{ fontWeight: 'normal', fontSize: 20, color: '#000', fontWeight: 'bold' }}>SURVIVE</Text>
                   </BlurView>
