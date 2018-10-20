@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#000',
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
   button:{
     marginBottom: 30,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 50,
   },
   statusBar: {
-    backgroundColor: 'darkgray',
+    backgroundColor: 'gray',
     height: Constants.statusBarHeight,
   },
 })
