@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import {
+  Text,
+  View,
+  Image,
+  ImageBackground,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+  StyleSheet,
+  Dimensions
+} from 'react-native';
 import { Button } from '../common';
 import Swiper from 'react-native-swiper';
 
 class Home extends Component {
 
-  onButtonPress() {
+  onButtonPressInventory() {
     Actions.inventory();
+  }
+  
+  onButtonPressSurvive() {
+    Actions.simulate();
   }
 
   renderButton() {
@@ -16,14 +30,14 @@ class Home extends Component {
         <Button
           buttonStyleProp={{ backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 0.5, borderColor: 'white', width: 200, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}
           textStyleProp={{ color: '#333', fontSize: 14 }}
-          onPress={this.onButtonPress.bind(this)}
+          onPress={this.onButtonPressSurvive.bind(this)}
         >
           SURVIVE
         </Button>
         <Button
           buttonStyleProp={{ backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 0.5, borderColor: 'white', width: 200, alignSelf: 'center', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}
           textStyleProp={{ color: '#333', fontSize: 14 }}
-          onPress={this.onButtonPress.bind(this)}
+          onPress={this.onButtonPressInventory.bind(this)}
         >
           INVENTORY
         </Button>
