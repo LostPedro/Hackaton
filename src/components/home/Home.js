@@ -7,31 +7,43 @@ import {
   ScrollView,
   TouchableOpacity,
   Alert,
-  StyleSheet
+  StyleSheet,
+  Dimensions
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { BlurView } from 'expo';
+import { BlurView, Constants } from 'expo';
 
 class Home extends Component {
-
   render() {
+    var {height, width} = Dimensions.get('window');
+    let buttonLeft = (
+      <Text style={styles.buttonText}>‹</Text>
+    );
+    let buttonRight = (
+      <Text style={styles.buttonText}>›</Text>
+    );
     return (
-      <Swiper showsPagination={false} style={styles.wrapper} showsButtons={true}>
-          <ImageBackground source={{ uri: 'http://paintingandframe.com/uploadpic/others/big/san_francisco_earthquake.jpg'}} style={styles.slide1}>
-              <Text style={styles.text}>TSUNAMI</Text>
-              <TouchableOpacity style={{ flex: 1, justifyContent : 'flex-end', alignItems: 'center', marginBottom: 30 }}>
-                <BlurView intensity={90} blurType="light" style={styles.button}>
-                  <Text style={{ fontWeight: 'normal', fontSize: 20, color: '#FFF', fontWeight: 'bold' }}>SURVIVE</Text>
+      <View style={{ flex: 1 }}>
+        <View style={[styles.statusBar, this.props.statusBarStyle]} />
+        <Swiper nextButton={buttonRight} prevButton={buttonLeft} showsPagination={false} style={styles.wrapper} showsButtons={true}>
+            <ImageBackground source={{ uri: 'https://ih1.redbubble.net/image.581169612.1450/flat,750x1000,075,t.u1.jpg'}} style={styles.slide1}>
+                <BlurView intensity={90} blurType="light" style={{ width: width, alignItems: 'center', justifyContent: 'center', height: 50}}>
+                  <Text style={styles.text}>MAREMOTO</Text>
                 </BlurView>
-              </TouchableOpacity>
-          </ImageBackground>
-        <View style={styles.slide2}>
+                <TouchableOpacity style={{ flex: 1, justifyContent : 'flex-end', alignItems: 'center', marginBottom: 30 }}>
+                  <BlurView intensity={90} blurType="light" style={styles.button}>
+                    <Text style={{ fontWeight: 'normal', fontSize: 20, color: '#000', fontWeight: 'bold' }}>SURVIVE</Text>
+                  </BlurView>
+                </TouchableOpacity>
+            </ImageBackground>
+          <View style={styles.slide2}>
 
-        </View>
-        <View style={styles.slide3}>
+          </View>
+          <View style={styles.slide3}>
 
-        </View>
-      </Swiper>
+          </View>
+        </Swiper>
+      </View>
     );
   }
 }
@@ -62,10 +74,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#92BBD9',
   },
   text: {
-    color: '#fff',
+    color: '#000',
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 20
   },
   button:{
     marginBottom: 30,
@@ -77,7 +88,14 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 20,
     borderColor: 'gray'
-}
+  },
+  buttonText: {
+    fontSize: 50,
+  },
+  statusBar: {
+    backgroundColor: 'darkgray',
+    height: Constants.statusBarHeight,
+  },
 })
 
 export { Home };
