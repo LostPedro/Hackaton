@@ -17,7 +17,7 @@ class Home extends Component {
   render() {
     return (
       <Swiper showsPagination={false} style={styles.wrapper} showsButtons={true}>
-          <ImageBackground source={{ uri: 'https://4.bp.blogspot.com/-ylz0GQFhHq8/WfDNlW9h9TI/AAAAAAAAFHo/3OBE_CxO0lcfic4zr1TAlxlLusMPaSqsACLcBGAs/s1600/tsunami.jpg'}} style={styles.slide1}>
+          <ImageBackground source={{ uri: 'http://paintingandframe.com/uploadpic/others/big/san_francisco_earthquake.jpg'}} style={styles.slide1}>
               <Text style={styles.text}>TSUNAMI</Text>
               <TouchableOpacity style={{ flex: 1, justifyContent : 'flex-end', alignItems: 'center', marginBottom: 30 }}>
                 <BlurView intensity={90} blurType="light" style={styles.button}>
