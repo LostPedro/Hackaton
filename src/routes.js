@@ -7,7 +7,7 @@ const Routes = () => {
    <Router>
      <Scene key="root" hideNavBar>
 
-       <Scene title="TSUNAM" key="main">
+       <Scene navTransparent title="TSUNAMI" key="main">
          <Scene key="home" component={Home} />
        </Scene>
 
@@ -16,8 +16,10 @@ const Routes = () => {
   );
 };
 
-const style = {
-
+const styles = {
+  navBar: {
+      backgroundColor: 'rgba(255,255,255,0)'
+    },
 };
 
  export default Routes;
