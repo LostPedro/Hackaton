@@ -19,7 +19,7 @@ class Home extends Component {
   onButtonPressInventory() {
     Actions.inventory();
   }
-  
+
   onButtonPressSurvive() {
     Actions.simulate();
   }
@@ -86,10 +86,24 @@ class Home extends Component {
           </View>
         </View>
         <View style={styles.slide2}>
-          <Text style={styles.text}>Beautiful</Text>
+          <View style={{ flex: 1, backgroundColor: '#33486b', alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ flex: 0.8, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            </View>
+            {this.renderPhoto()}
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              {this.renderButton()}
+            </View>
+          </View>
         </View>
         <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
+          <View style={{ flex: 1, backgroundColor: '#33486b', alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ flex: 0.8, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            </View>
+            {this.renderPhoto()}
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              {this.renderButton()}
+            </View>
+          </View>
         </View>
       </Swiper>
 

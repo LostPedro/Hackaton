@@ -10,13 +10,12 @@ const Routes = () => {
    <Router>
      <Scene key="root" hideNavBar>
 
-       <Scene hideNavBar key="main">
+       <Scene key="main">
          <Scene back title='Inventory' backButtonTintColor="white" titleStyle={{ color: 'white', fontSize: 20 }} navigationBarStyle={styles.navBar} key="inventory" component={DisasterInventory} />
          <Scene initial hideNavBar key="home" component={Home} />
+         <Scene back backButtonTintColor="white" titleStyle={{ color: 'white', fontSize: 20 }} navigationBarStyle={styles.navBar} key="simulate" component={Simulate} />
        </Scene>
-       <Scene hideNavBar key="simulate">
-         <Scene key="simulate" component={Simulate} />
-       </Scene>
+
     </Scene>
    </Router>
   );
@@ -24,7 +23,8 @@ const Routes = () => {
 
 const styles = {
   navBar: {
-      backgroundColor: '#33486b'
+      backgroundColor: '#33486b',
+
     },
 };
 

@@ -9,7 +9,8 @@ import {
   Alert,
   StyleSheet,
   Dimensions,
-  FlatList
+  FlatList,
+  AsyncStorage
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { BlurView, Constants } from 'expo';
@@ -29,6 +30,20 @@ class DisasterInventory extends Component {
       ],
       dataSelected: []
     };
+
+    AsyncStorage.multiGet(['dataHUE', 'dataMineHUE'])
+    .then((value) => {
+      if (value[0][1]) {
+        var jsonParse = JSON.parse(value[0][1]);
+        var jsonParseMe = JSON.parse(value[1][1]);
+        return (
+          this.setState({
+            data: jsonParse,
+            dataSelected: jsonParseMe
+          })
+        )
+      }
+    });
   }
 
   onPressInventory(item, i) {
@@ -38,6 +53,10 @@ class DisasterInventory extends Component {
       dataSelected: [...prevState.dataSelected, item]
     }))
     this.setState({data: array});
+    var dataJSON = JSON.stringify(this.state.data);
+    var myJSON = JSON.stringify(this.state.dataSelected);
+    AsyncStorage.setItem('dataHUE', dataJSON);
+    AsyncStorage.setItem('dataMineHUE', myJSON);
   }
 
   onPressMine(item, i) {
@@ -47,6 +66,10 @@ class DisasterInventory extends Component {
       data: [...prevState.data, item]
     }))
     this.setState({dataSelected: array});
+    var dataJSON = JSON.stringify(this.state.data);
+    var myJSON = JSON.stringify(this.state.dataSelected);
+    AsyncStorage.setItem('dataHUE', dataJSON);
+    AsyncStorage.setItem('dataMineHUE', myJSON);
   }
 
   render() {
