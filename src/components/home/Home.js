@@ -11,10 +11,60 @@ import {
   StyleSheet,
   Dimensions
 } from 'react-native';
+import { Button } from '../common';
 import Swiper from 'react-native-swiper';
-import { BlurView, Constants } from 'expo';
 
 class Home extends Component {
+
+  onButtonPressInventory() {
+    Actions.inventory();
+  }
+  
+  onButtonPressSurvive() {
+    Actions.simulate();
+  }
+
+  renderButton() {
+    return (
+      <View>
+        <Button
+          buttonStyleProp={{ backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 0.5, borderColor: 'white', width: 200, alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }}
+          textStyleProp={{ color: '#333', fontSize: 14 }}
+          onPress={this.onButtonPressSurvive.bind(this)}
+        >
+          SURVIVE
+        </Button>
+        <Button
+          buttonStyleProp={{ backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 0.5, borderColor: 'white', width: 200, alignSelf: 'center', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}
+          textStyleProp={{ color: '#333', fontSize: 14 }}
+          onPress={this.onButtonPressInventory.bind(this)}
+        >
+          INVENTORY
+        </Button>
+      </View>
+
+    );
+  }
+
+  renderPhoto() {
+      return (
+        <View
+          style={{ flex: 1.5,
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center' }}
+        >
+          <Image
+            source={ require('../../../assets/png/007-flood.png') }
+            style={{ height: 200, width: 200, borderRadius: 100, borderWidth: 0.5, borderColor: '#01639A' }}
+          />
+          <Text style={{ color: 'white', fontSize: 20, fontWeight: '600', marginTop: 30 }}>
+            Inundações
+          </Text>
+        </View>
+      );
+    }
+
   render() {
     var {height, width} = Dimensions.get('window');
     let buttonLeft = (
@@ -24,43 +74,38 @@ class Home extends Component {
       <Text style={styles.buttonText}>›</Text>
     );
     return (
-      <View style={{ flex: 1 }}>
-        <View style={[styles.statusBar, this.props.statusBarStyle]} />
-        <Swiper nextButton={buttonRight} prevButton={buttonLeft} showsPagination={false} style={styles.wrapper} showsButtons={true}>
-            <ImageBackground source={{ uri: 'https://ih1.redbubble.net/image.581169612.1450/flat,750x1000,075,t.u1.jpg'}} style={styles.slide1}>
-                <BlurView intensity={90} blurType="light" style={{ width: width, alignItems: 'center', justifyContent: 'center', height: 50}}>
-                  <Text style={styles.text}>MAREMOTO</Text>
-                </BlurView>
-                <TouchableOpacity onPress={Actions.simulate} style={{ flex: 1, justifyContent : 'flex-end', alignItems: 'center', marginBottom: 30 }}>
-                  <BlurView intensity={90} blurType="light" style={styles.button}>
-                    <Text style={{ fontWeight: 'normal', fontSize: 20, color: '#000', fontWeight: 'bold' }}>SURVIVE</Text>
-                  </BlurView>
-                </TouchableOpacity>
-            </ImageBackground>
-          <View style={styles.slide2}>
-
+      <Swiper nextButton={buttonRight} prevButton={buttonLeft} style={styles.wrapper} showsButtons={true}>
+        <View style={styles.slide1}>
+          <View style={{ flex: 1, backgroundColor: '#33486b', alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ flex: 0.8, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            </View>
+            {this.renderPhoto()}
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              {this.renderButton()}
+            </View>
           </View>
-          <View style={styles.slide3}>
+        </View>
+        <View style={styles.slide2}>
+          <Text style={styles.text}>Beautiful</Text>
+        </View>
+        <View style={styles.slide3}>
+          <Text style={styles.text}>And simple</Text>
+        </View>
+      </Swiper>
 
-          </View>
-        </Swiper>
-      </View>
     );
   }
 }
 
-
-
 const styles = StyleSheet.create({
   wrapper: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.3)'
+    flex: 1
   },
   slide1: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.3)'
+    backgroundColor: '#33486b',
   },
   slide2: {
     flex: 1,
@@ -75,27 +120,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#92BBD9',
   },
   text: {
-    color: '#000',
+    color: '#fff',
     fontSize: 30,
     fontWeight: 'bold',
   },
-  button:{
-    marginBottom: 30,
-    backgroundColor: 'rgba(0,0,0, 0.3)',
-    height: 60,
-    width: 350,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 0.5,
-    borderRadius: 20,
-    borderColor: 'gray'
-  },
   buttonText: {
     fontSize: 50,
-  },
-  statusBar: {
-    backgroundColor: 'darkgray',
-    height: Constants.statusBarHeight,
+    color: 'white'
   },
 })
 
